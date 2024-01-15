@@ -1,3 +1,4 @@
+![Ci Status](https://github.com/Brice-sogilis/e2e-kata/actions/workflows/ci.yml/badge.svg)
 # End-to-end kata: Markdown sourced snippets verifier
 
 Python kata to experiment on testing a CLI program only from the terminal usage

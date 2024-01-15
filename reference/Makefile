@@ -15,4 +15,4 @@ checks: snippet.py
 	$(PY) -m mypy *.py
 	
 ci-setup:
-	$(PY) -m pip install --user -r requirements.txt --upgrade pip
+	$(PY) -m pip install -r requirements.txt

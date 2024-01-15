@@ -17,3 +17,6 @@ reference-tests:
 reference-checks:
 	$(MAKE) -C reference checks
 	$(PY) reference/main.py --sources_root=. README.md
+
+ci-setup:
+	$(MAKE) -C reference ci-setup
