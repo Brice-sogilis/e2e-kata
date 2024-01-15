@@ -1,0 +1,7 @@
+# Python caches and artifacts
+__pycache__
+.mypy_cache
+_trial_temp
+
+# Cram test error files
+usage.*.err
