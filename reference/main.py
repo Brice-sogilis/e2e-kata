@@ -4,12 +4,12 @@ import snippet
 from pathlib import Path
 
 
-def main(args: list[str]):
+def main(argslist: list[str]):
     parser = argparse.ArgumentParser(prog="SnippetCheck",
                                      description="Verify source code snippets actually correspond to source files content")
     parser.add_argument("-s", "--sources_root")
     parser.add_argument("markdown_files", nargs='+')
-    args = parser.parse_args(args)
+    args = parser.parse_args(argslist)
     try:
         docs = args.markdown_files
         error_count = 0

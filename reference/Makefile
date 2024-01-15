@@ -12,7 +12,7 @@ tests: snippet.py main.py
 	$(PY) -m $(CRAM) usage
 
 checks: snippet.py
-	$(PY) -m mypy snippet.py
-
+	$(PY) -m mypy *.py
+	
 ci-setup:
 	$(PY) -m pip install --user -r requirements.txt --upgrade pip
