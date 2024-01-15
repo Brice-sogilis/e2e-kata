@@ -7,6 +7,10 @@ endif
 
 tests:
 	MAIN=${PWD}/workspace/main.py $(PY) -m $(CRAM) stage_01
+#   MAIN=${PWD}/workspace/main.py $(PY) -m $(CRAM) stage_02
+#   MAIN=${PWD}/workspace/main.py $(PY) -m $(CRAM) stage_03
+#   MAIN=${PWD}/workspace/main.py $(PY) -m $(CRAM) stage_04
+	
 
 reference-tests:
 	MAIN=${PWD}/reference/main.py $(PY) -m $(CRAM) stage_01

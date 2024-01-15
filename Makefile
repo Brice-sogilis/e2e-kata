@@ -1,3 +1,5 @@
+PY=python3
+
 workspace-all: workspace-checks workspace-tests
 
 workspace-tests:
@@ -14,3 +16,4 @@ reference-tests:
 
 reference-checks:
 	$(MAKE) -C reference checks
+	$(PY) reference/main.py --sources_root=. README.md
