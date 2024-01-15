@@ -1,10 +1,15 @@
 PY=python3
+ifeq (${UPDATE_REF}, true)
+	CRAM=cram -i -y
+else
+	CRAM=cram
+endif
 
 all: checks tests
 
 tests: snippet.py main.py
 	$(PY) -m unittest snippet.py
-	$(PY) -m cram usage
+	$(PY) -m $(CRAM) usage
 
 checks: snippet.py
 	$(PY) -m mypy snippet.py
