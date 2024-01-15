@@ -5,7 +5,7 @@ Python kata to experiment on testing a CLI program only from the terminal usage
 
 ## Theme
 
-The program develop during this kata is a 'markdown snippet verifier'. It should allow us to write code snippet and markdown annotated with a source file and line range, and verify that they match an actual source file.
+The program develop during this kata is a 'markdown snippet verifier'. It should allow us to write code snippets in a markdown document, annotate them with a source file and line range, and verify that they match an actual source file.
 
 For example, we could write Markdown code like this in **markdown.md**:
 ````markdown
@@ -13,8 +13,6 @@ For example, we could write Markdown code like this in **markdown.md**:
 
 ## Section with code snippet
  
-  language   source file from which the snippet is copied   lines in the source file corresponding to the snippet
-   vvvvvv    vvvvvvvvvvvvvvvvvvvvvvvv                       vvvvvvvvv
 ```python    source=workspace/main.py                       lines=1-3
 hello = "Hello"
 world = "World!"
@@ -24,9 +22,19 @@ print(hi, world, sep=", ")
 
 And when running our program against this file, it will fail if workspace/main.py does not exists, or if it does not contain the expected lines.
 
+Focusing on the snippet header line, here are the details of the parameters (note that the language parameters comes from the native markdown syntax and can be omitted. It helps for syntax highlighting e.g. when displaying the markdown in github):
+
+````markdown
+  language   source file from which the snippet is copied   lines in the source file corresponding to the snippet
+   vvvvvv    vvvvvvvvvvvvvvvvvvvvvvvv                       vvvvvvvvv
+```python    source=workspace/main.py                       lines=1-3
+````
+
+You can look at usage examples in [reference/usage/usage.t](reference/usage/usage.t).
+
 ## End to end test tool
 
-We are going to use the [Cram tests framework](https://bitheap.org/cram/), which belong to the acceptance testing family. The core principle of this framework is simple: write shell commands and their expected output in a test file, then run the commands and compare the actual output. The tool offers facilities to display errors as diffs, or automatically modify the test file when you decide to accept the modifications. Let's look at an example in the tests of our reference implementation [reference/usage/usage.t](reference/usage/usage.t)
+We are going to use the [Cram tests framework](https://bitheap.org/cram/), which belongs to the acceptance testing family. The core principle of this framework is simple: write shell commands and their expected output in a test file, then run the commands and compare the actual output. The tool offers facilities to display errors as diffs, or automatically modify the test file when you decide to accept the modifications. Let's look at an example in the tests of our reference implementation [reference/usage/usage.t](reference/usage/usage.t)
 
 ```cram source=reference/usage/usage.t lines=1-17
 Setup
@@ -54,7 +62,7 @@ Usage
 
 Ignore the `Setup` section, it is only here to simplify the use of `${VERIFY}` to call our python program in the rest of the file.
 
-In the `Usage` section, we test a run of our program with the --help option. The following lines correspond to the expected output of this command. If during the test run the output does npt correspond to the expected one, the test would fail showing a diff. For example, if we add replaced "markdown_files" with "markdowns" in our implementation, it would output something like this:
+In the `Usage` section, we test a run of our program with the --help option. The following lines correspond to the expected output of this command. If during the test run the output does not correspond to the expected one, the test would fail, displaying a diff. For example, if we add replaced "markdown_files" with "markdowns" in our implementation, it would output something like this:
 
 ```
 --- usage/usage.t
@@ -116,6 +124,7 @@ to run the test on your current implementation.
 You may then consider adding more features to the program: 
 
 + Display the actual difference in case of a mismatch between the snippet and the source file
++ Update automatically the snippet from the source file when the mismatch is expected
 + Allow some form of escaping in the markdown snippet, for example
 ````markdown
 ```python source=source.py lines = 1-5
@@ -134,5 +143,6 @@ def main():
   another_stuff()
   return 0
 ``` 
++ ... 
 
 You can do it TDD style: add a simple cram test in a stage_n folder and iterate from here ;)
