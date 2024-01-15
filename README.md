@@ -146,3 +146,7 @@ def main():
 + ... 
 
 You can do it TDD style: add a simple cram test in a stage_n folder and iterate from here ;)
+
+## Contribute
+
+While improving your solution, you may probably end up with a better one than the reference. Feel free to replace it with your implementation, and update the reference tests accordingly. Setting **UPDATE_REF=true** when running the Makefile(s) **reference-tests** target automatically update the references in cram test files.
