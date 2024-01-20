@@ -1,7 +1,7 @@
 ![Ci Status](https://github.com/Brice-sogilis/e2e-kata/actions/workflows/ci.yml/badge.svg)
 # End-to-end kata: Markdown sourced snippets verifier
 
-Python kata to experiment on testing a CLI program only from the terminal usage
+Python kata to experiment on testing a CLI program only from it's terminal usage
 
 ## Theme
 
@@ -16,7 +16,7 @@ For example, we could write Markdown code like this in **markdown.md**:
 ```python    source=workspace/main.py                       lines=1-3
 hello = "Hello"
 world = "World!"
-print(hi, world, sep=", ")
+print(hello, world, sep=", ")
 ```
 ````
 
