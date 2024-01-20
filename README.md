@@ -3,6 +3,25 @@
 
 Python kata to experiment on testing a CLI program only from it's terminal usage
 
+## Requirements & Setup
+
+The kata is driven via Makefile targets and requires python >= 3.10, with some additional pip packages. Due to the shell-based nature of the tests, they are incompatible with non-unix shell, and therefore Windows (MacOS may work but is not tested).
+
+### Linux (recommended)
+#### Requirements
++ `make`
++ `python` >= 3.10
+#### Setup
++ run `make ci-setup` to install required pip packages, or install them manually from [reference/requirements.txt](reference/requirements.txt)
+
+### Docker setup (mandatory for Windows users)
+#### Requirements
++ `make` (may be mingw-make or similar on Windows)
++ `docker`
+#### Setup
++ run `make docker-image` once
++ replace every subsequent `make <target>` by `make in-docker TARGET=<target>`
+
 ## Theme
 
 The program develop during this kata is a 'markdown snippet verifier'. It should allow us to write code snippets in a markdown document, annotate them with a source file and line range, and verify that they match an actual source file.
