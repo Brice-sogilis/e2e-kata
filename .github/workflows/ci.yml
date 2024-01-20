@@ -21,3 +21,17 @@ jobs:
       run: |
         make reference-checks
         make reference-tests
+
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build docker image
+      run: make docker-image
+
+    - name: Validate running the kata via docker
+      run: |
+        make in-docker TARGET=reference-checks
+        make in-docker TARGET=reference-tests
+        make in-docker TARGET=workspace-checks
