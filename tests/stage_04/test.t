@@ -6,5 +6,3 @@ Setup
 Various edge cases
   $ $VERIFY --sources_root=${TESTDIR} ${TESTDIR}/Unclosed.md
   $ $VERIFY --sources_root=${TESTDIR} ${TESTDIR}/Nested.md
-
-
