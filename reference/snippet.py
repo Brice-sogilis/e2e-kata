@@ -23,6 +23,14 @@ class SnippetError:
     def __str__(self):
         return f"Snippet {self.doc_line_range.start}-{self.doc_line_range.end}: {self.message}"
 
+@dataclass
+class MissingSourceFileError:
+    doc_line_range: LineRange
+    source_file: str
+
+    def __str__(self):
+        return f"Missing source file: {self.source_file}"
+
 
 @dataclass
 class Snippet:
@@ -44,12 +52,12 @@ class Snippet:
 file_accessor = Callable[[str], list[str] | None]
 
 
-def verify_snippets(snippets: list[Snippet], file_access: file_accessor) -> list[SnippetError]:
-    res = []
+def verify_snippets(snippets: list[Snippet], file_access: file_accessor) -> list[SnippetError | MissingSourceFileError]:
+    res: list[SnippetError | MissingSourceFileError] = []
     for s in snippets:
         source_content = file_access(s.source)
         if source_content is None:
-            res.append(SnippetError(doc_line_range=s.doc_line_range, message=f"Missing source file {s.source}"))
+            res.append(MissingSourceFileError(doc_line_range=s.doc_line_range, source_file=s.source))
         elif s.mismatch(source_content):
             res.append(SnippetError(doc_line_range=s.doc_line_range, message=f"Source file content mismatch in {s.source}"))
     return res
@@ -184,7 +192,7 @@ class Tests(unittest.TestCase):
         ])
         errors = verify_snippets(snippets, no_files)
         self.assertListEqual(errors,
-                             [SnippetError(doc_line_range=LineRange(2, 4), message="Missing source file A.java")])
+                             [MissingSourceFileError(doc_line_range=LineRange(2, 4), source_file="A.java")])
 
     def test_error_content_mismatch(self):
         snippets = extract_snippets([

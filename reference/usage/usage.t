@@ -31,17 +31,17 @@ Wrong lines:
 
 Missing source file:
   $ ${VERIFY} --sources_root ${TESTDIR} ${TESTDIR}/TestNoSource.md
-  TestNoSource.md: Snippet 4-8: Missing source file DoesNotExist.java
+  TestNoSource.md: Missing source file: DoesNotExist.java
   [1]
 
 Multiple files:
   $ ${VERIFY} --sources_root ${TESTDIR} ${TESTDIR}/TestKo.md ${TESTDIR}/TestNoSource.md
   TestKo.md: Snippet 4-8: Source file content mismatch in TestSource.java
-  TestNoSource.md: Snippet 4-8: Missing source file DoesNotExist.java
+  TestNoSource.md: Missing source file: DoesNotExist.java
   [1]
 
 Using glob:
   $ ${VERIFY} --sources_root ${TESTDIR} ${TESTDIR}/*.md
   TestKo.md: Snippet 4-8: Source file content mismatch in TestSource.java
-  TestNoSource.md: Snippet 4-8: Missing source file DoesNotExist.java
+  TestNoSource.md: Missing source file: DoesNotExist.java
   [1]

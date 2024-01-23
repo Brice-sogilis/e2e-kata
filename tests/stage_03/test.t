@@ -13,6 +13,6 @@ Wrong lines
 
 Multiple files
   $ $VERIFY --sources_root=${TESTDIR} ${TESTDIR}/*.md
-  MissingSource.md: Snippet 5-9: Missing source file definitely_not_a_file.c
+  MissingSource.md: Missing source file: definitely_not_a_file.c
   WrongLines.md: Snippet 4-6: Source file content mismatch in Source.kt
   [1]
