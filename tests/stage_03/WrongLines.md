@@ -1,7 +1,7 @@
 Some stuff
 
 The following snippet does not match the referenced source
-```kotlin lines=3-3 source=Source.kt
+```kotlin source=Source.kt lines=3-3 
 fun main() = println("Youpi")
 ```
 

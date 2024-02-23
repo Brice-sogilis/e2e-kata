@@ -8,8 +8,8 @@ endif
 tests:
 	MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_01
 	MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_02
-#   MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_03
-#   MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_04
+	MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_03
+#	MAIN=$(CURDIR)/../workspace/main.py $(PY) -m $(CRAM) stage_04
 	
 
 reference-tests:
